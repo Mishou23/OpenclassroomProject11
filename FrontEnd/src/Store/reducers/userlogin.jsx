@@ -1,29 +1,63 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
+// createAsyncThunk is a function that generates asynchronous Redux action creators
+// It takes a string (an action type) and an async function as arguments
 export const loginUser = createAsyncThunk(
-  "user/login",
+  "login",
   async (userCredential) => {
-    // Using the Fetch API to make an HTTP POST request
-    const response = await fetch("http://localhost:3001/api/v1/user/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userCredential),
-    });
+    // This is the asynchronous action creator for logging in a user
 
-    if (!response.ok) {
-        
-      throw new Error("Login request failed");
-    }
+    // Using Axios to make an HTTP POST request to a login endpoint
+    const request = await axios.post(
+      "http://localhost:3001/api/v1/user/login/",
+      userCredential
+    );
 
-    // Parse the response as JSON
-    const data = await response.json();
+    // Extract the token from the response
+    const token = request.data.body.token;
+
+    // Log the token value
+    console.log(token);
 
     // Store the user's token in localStorage
-    localStorage.setItem("user", data.body.token);
+    localStorage.setItem("user", token);
 
-    // Return the token as the action payload
-    return data.body.token;
+    // Finally, it returns the token as the action payload
+    return token;
   }
 );
+
+const LoginSlice = createSlice({
+  name: "user",
+  initialState: {
+    loading: false,
+    user: null,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.user = null;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.user = null;
+        if (action.error.message === "Request failed with status code 400") {
+          state.error = "Access Denied! Invalid Personal information";
+        } else {
+          state.error = action.error.message;
+        }
+      });
+  },
+});
+
+export const { logOutUser } = LoginSlice.actions;
+export default LoginSlice.reducer;
