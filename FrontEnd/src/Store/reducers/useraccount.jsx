@@ -25,15 +25,15 @@ const userAccountSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUserAccount.pending, (state) => {
+      .addCase(UserAccount.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getUserAccount.fulfilled, (state, action) => {
+      .addCase(UserAccount.fulfilled, (state, action) => {
         state.loading = false;
         state.userAccount = action.payload;
       })
 
-      .addCase(getUserAccount.rejected, (state, action) => {
+      .addCase(UserAccount.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

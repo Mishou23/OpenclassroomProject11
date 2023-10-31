@@ -1,30 +1,16 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// createAsyncThunk is a function that generates asynchronous Redux action creators
-// It takes a string (an action type) and an async function as arguments
 export const loginUser = createAsyncThunk(
-  "login",
+  "user/login",
   async (userCredential) => {
-    // This is the asynchronous action creator for logging in a user
-
-    // Using Axios to make an HTTP POST request to a login endpoint
     const request = await axios.post(
       "http://localhost:3001/api/v1/user/login/",
       userCredential
     );
-
-    // Extract the token from the response
-    const token = request.data.body.token;
-
-    // Log the token value
-    console.log(token);
-
-    // Store the user's token in localStorage
-    localStorage.setItem("user", token);
-
-    // Finally, it returns the token as the action payload
-    return token;
+    localStorage.setItem("user", request.data.body.token);
+    return request.data.body.token;
   }
 );
 
@@ -33,9 +19,18 @@ const LoginSlice = createSlice({
   initialState: {
     loading: false,
     user: null,
+    isAuthenticated: false,
     error: null,
   },
-  reducers: {},
+
+  reducers: {
+    logOutUser: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
+      localStorage.removeItem("user");
+    },
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
@@ -43,15 +38,17 @@ const LoginSlice = createSlice({
         state.user = null;
         state.error = null;
       })
+
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
+        state.isAuthenticated = true;
         state.user = action.payload;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
         if (action.error.message === "Request failed with status code 400") {
-          state.error = "Access Denied! Invalid Personal information";
+          state.error = "Access Debied! Invalid Personnal information";
         } else {
           state.error = action.error.message;
         }
