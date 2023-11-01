@@ -9,8 +9,10 @@ export const loginUser = createAsyncThunk(
       "http://localhost:3001/api/v1/user/login/",
       userCredential
     );
-    localStorage.setItem("user", request.data.body.token);
-    return request.data.body.token;
+    const token = request.data.body.token;
+    localStorage.setItem("user", token );
+    console.log('token :', token)
+    return token;
   }
 );
 
