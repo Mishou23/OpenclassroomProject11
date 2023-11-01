@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import UserConfig from "./config/Userconfig.jsx";
-
+import './style.css'
 const UserAccount = () => {
   const {
-    navigate,
     firstname,
     lastname,
     editingFirstName,
@@ -14,14 +12,7 @@ const UserAccount = () => {
     handleCancel,
   } = UserConfig();
 
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("user");
-    if (!isLoggedIn) {
-      console.log("redirect to login");
-      navigate("/login");
-    }
-  }, [navigate]);
-
+  
   return (
     <div className="contain_user">
       <main className="main bg-dark">

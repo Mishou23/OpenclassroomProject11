@@ -1,9 +1,9 @@
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { logOutUser } from "../../../Store/reducers/userlogin";
 import { useDispatch } from "react-redux";
 import { getUserAccount } from "../../../Store/reducers/useraccount";
 import { profilupdate } from "../../../Store/reducers/profilupdate";
+
 
 const UserConfig = () => {
   const navigate = useNavigate();
@@ -14,11 +14,14 @@ const UserConfig = () => {
   const [editingLastName, setEditingLastName] = useState("");
 
   useEffect(() => {
+    // Ensure that the user is logged in before proceeding
     const isLoggedIn = localStorage.getItem("user");
+    console.log('logIn :',isLoggedIn)
     if (!isLoggedIn) {
       console.log("redirect to login");
       navigate("/login");
     } else {
+      // Fetch user data only if the user is logged in
       dispatch(getUserAccount()).then((userData) => {
         if (userData) {
           console.log(userData);
@@ -30,18 +33,11 @@ const UserConfig = () => {
   }, [navigate, dispatch]);
 
   const handleDisconnect = () => {
-    // Call logOutUser using dispatch
-    dispatch(logOutUser());
-
-    // Reset the "user" item in localStorage and isAuthenticated
     localStorage.removeItem("user");
-
-    // Redirect the user to the login page
     navigate("/login");
   };
 
   const handleNewName = () => {
-    // Create an object with the new values of the first name and last name
     const updatedUser = {
       firstName: editingFirstName,
       lastName: editingLastName,

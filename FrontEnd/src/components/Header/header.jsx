@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ isLoggedIn, firstname, handleDisconnect }) {
+  console.log("Header - isLoggedIn:", isLoggedIn);
+  console.log("Header - firstname:", firstname);
   return (
     <header>
       <nav className="main-nav">
@@ -36,6 +38,7 @@ function Header({ isLoggedIn, firstname, handleDisconnect }) {
             <Link className="main-nav-item" to="/login">
               <FontAwesomeIcon icon={faCircleUser} />
               Sign In
+              {console.log(isLoggedIn)}
             </Link>
           )}
         </div>
