@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import "../../../sass/style.scss";
 import { useEffect, useState } from "react";
 import { logOutUser } from "../../Store/userlogin";
 import { useDispatch } from "react-redux";
