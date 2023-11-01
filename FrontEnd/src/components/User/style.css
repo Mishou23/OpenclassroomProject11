@@ -11,7 +11,7 @@
     padding: 1.5rem;
     box-sizing: border-box;
     text-align: left;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
   
   .account-amount {
@@ -46,7 +46,9 @@
   
   .header {
     color: #fff;
-    margin-bottom: 2rem;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   
   .transaction-button {
