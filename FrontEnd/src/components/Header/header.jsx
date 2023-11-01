@@ -16,7 +16,7 @@ function Header() {
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-          <Link className="main-nav-item" to="/sign-in">
+          <Link className="main-nav-item" to="/login">
             <FontAwesomeIcon icon={faCircleUser} />
             Sign In
           </Link>
