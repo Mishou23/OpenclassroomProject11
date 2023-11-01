@@ -18,8 +18,8 @@ const UserConfig = () => {
     const isLoggedIn = localStorage.getItem("user");
     console.log('logIn :',isLoggedIn)
     if (!isLoggedIn) {
-      console.log("redirect to login");
-      navigate("/login");
+      // console.log("redirect to login");
+      // navigate("/login");
     } else {
       // Fetch user data only if the user is logged in
       dispatch(getUserAccount()).then((userData) => {
