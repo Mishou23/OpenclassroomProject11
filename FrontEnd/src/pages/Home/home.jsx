@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header/header";
+import Navbar from "../../container/Header/nav";
 import Hero from "../../components/Hero/hero";
 import Features from "../../components/Features/features";
 import Footer from "../../components/Footer/footer";
@@ -7,7 +7,7 @@ import Footer from "../../components/Footer/footer";
 function Home() {
   return (
   <>
-    <Header />
+    <Navbar />
      <main>
      <Hero />
       <Features />

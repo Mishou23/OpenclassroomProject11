@@ -9,7 +9,7 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-export const UserAccount = createAsyncThunk("user/account", async () => {
+export const getUserAccount = createAsyncThunk("user/account", async () => {
   const request = await axios.post(
     `http://localhost:3001/api/v1/user/profile/`
   );
@@ -25,15 +25,15 @@ const userAccountSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(UserAccount.pending, (state) => {
+      .addCase(getUserAccount.pending, (state) => {
         state.loading = true;
       })
-      .addCase(UserAccount.fulfilled, (state, action) => {
+      .addCase(getUserAccount.fulfilled, (state, action) => {
         state.loading = false;
         state.userAccount = action.payload;
       })
 
-      .addCase(UserAccount.rejected, (state, action) => {
+      .addCase(getUserAccount.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

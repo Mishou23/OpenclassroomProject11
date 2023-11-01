@@ -1,12 +1,13 @@
-import Header from "../../components/Header/header";
+import Navbar from "../../container/Header/nav";
 import Footer from "../../components/Footer/footer";
-import BankAccount from "../../components/User/account";
+import UserAccount from "../../components/User/account";
 
 function User() {
+  
     return (
       <>
-      <Header />
-      <BankAccount />
+      <Navbar  />
+      <UserAccount />
         <Footer />
       </>
     );

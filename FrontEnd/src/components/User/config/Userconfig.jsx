@@ -1,9 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { logOutUser } from "../../Store/userlogin";
+import { logOutUser } from "../../../Store/reducers/userlogin";
 import { useDispatch } from "react-redux";
-import { getUserAccount } from "../../Store/useraccount";
-import { profilupdate } from "../../Store/profilupdate";
+import { getUserAccount } from "../../../Store/reducers/useraccount";
+import { profilupdate } from "../../../Store/reducers/profilupdate";
 
 const UserConfig = () => {
   const navigate = useNavigate();
