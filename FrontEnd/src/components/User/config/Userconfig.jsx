@@ -18,13 +18,13 @@ const UserConfig = () => {
     const isLoggedIn = localStorage.getItem("user");
     console.log('logIn :',isLoggedIn)
     if (!isLoggedIn) {
-      // console.log("redirect to login");
-      // navigate("/login");
+     console.log("redirect to login");
+     navigate("/login")
     } else {
       // Fetch user data only if the user is logged in
       dispatch(getUserAccount()).then((userData) => {
         if (userData) {
-          console.log(userData);
+          console.log('userData :', userData);
           setfirstname(userData.payload.body.firstName);
           setlastname(userData.payload.body.lastName);
         }
@@ -32,12 +32,13 @@ const UserConfig = () => {
     }
   }, [navigate, dispatch]);
 
+ 
   const handleDisconnect = () => {
     localStorage.removeItem("user");
     navigate("/login");
   };
 
-  const handleNewName = () => {
+  const handleNewName = (e) => {
     const updatedUser = {
       firstName: editingFirstName,
       lastName: editingLastName,
@@ -49,6 +50,7 @@ const UserConfig = () => {
         // Update the firstname state upon successful update
         setfirstname(editingFirstName);
         console.log("Update successful!");
+        window.location.reload();
       })
       .catch((error) => {
         // Handle errors in case the update fails

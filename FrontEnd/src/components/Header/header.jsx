@@ -21,10 +21,10 @@ function Header({ isLoggedIn, firstname, handleDisconnect }) {
         <div>
           {isLoggedIn ? (
             <div>
-              <a className="main-nav-item" href="">
+              <Link className="main-nav-item" to="/profile">
                 <i className="fa fa-user-circle"></i>
                 {firstname}
-              </a>
+              </Link>
               <Link
                 className="main-nav-item"
                 onClick={handleDisconnect}

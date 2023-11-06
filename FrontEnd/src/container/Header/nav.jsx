@@ -7,9 +7,7 @@ function Navbar() {
     firstname,
     handleDisconnect,
   } = UserConfig();
-  console.log("Navbar - isLoggedIn:", isLoggedIn);
-  console.log("Navbar - firstname:", firstname);
-
+  
   return (
     <>
         <Header

@@ -24,8 +24,8 @@ const UserAccount = () => {
                 <input
                   className="info_input"
                   type="text"
-                  name=""
-                  id=""
+                  name="firstname"
+                  id="firstname"
                   placeholder={firstname}
                   value={editingFirstName}
                   onChange={(e) => setEditingFirstName(e.target.value)}
@@ -38,8 +38,8 @@ const UserAccount = () => {
                 <input
                   className="info_input"
                   type="text"
-                  name=""
-                  id=""
+                  name="lastname"
+                  id="lastname"
                   placeholder={lastname}
                   value={editingLastName}
                   onChange={(e) => setEditingLastName(e.target.value)}

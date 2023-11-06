@@ -5,11 +5,11 @@ import Features from "../../components/Features/features";
 import Footer from "../../components/Footer/footer";
 
 function Home() {
-  const Disconnect = () => {
-    localStorage.removeItem("user");}
+  // const Disconnect = () => {
+  //   localStorage.removeItem("user");}
   return (
   <>
-  {Disconnect()}
+  {/* {Disconnect()} */}
     <Navbar />
      <main>
      <Hero />
