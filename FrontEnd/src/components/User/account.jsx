@@ -3,10 +3,13 @@ import './style.css'
 const UserAccount = () => {
   const {
     firstname,
+    username,
     lastname,
     editingFirstName,
+    editingUsername,
     editingLastName,
     setEditingFirstName,
+    setEditingUsername,
     setEditingLastName,
     handleNewName,
     handleCancel,
@@ -29,6 +32,15 @@ const UserAccount = () => {
                   placeholder={firstname}
                   value={editingFirstName}
                   onChange={(e) => setEditingFirstName(e.target.value)}
+                />
+                <input
+                  className="info_input"
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder={username}
+                  value={editingUsername}
+                  onChange={(e) => setEditingUsername(e.target.value)}
                 />
                 <button className="info_button button_left" onClick={handleNewName}>
                   SAVE

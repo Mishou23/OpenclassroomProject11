@@ -4,9 +4,9 @@ import Logo from "../../assets/images/argentBankLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
-function Header({ isLoggedIn, firstname, handleDisconnect }) {
+function Header({ isLoggedIn, username, handleDisconnect }) {
   console.log("Header - isLoggedIn:", isLoggedIn);
-  console.log("Header - firstname:", firstname);
+  console.log("Header - username:", username);
   return (
     <header>
       <nav className="main-nav">
@@ -23,7 +23,7 @@ function Header({ isLoggedIn, firstname, handleDisconnect }) {
             <div>
               <Link className="main-nav-item" to="/profile">
                 <i className="fa fa-user-circle"></i>
-                {firstname}
+                {username}
               </Link>
               <Link
                 className="main-nav-item"

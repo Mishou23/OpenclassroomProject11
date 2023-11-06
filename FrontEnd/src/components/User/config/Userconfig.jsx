@@ -9,9 +9,11 @@ const UserConfig = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [firstname, setfirstname] = useState("");
+  const [username, setUsername] = useState("");
   const [lastname, setlastname] = useState("");
   const [editingFirstName, setEditingFirstName] = useState("");
   const [editingLastName, setEditingLastName] = useState("");
+  const [editingUsername, setEditingUsername] = useState("");
 
   useEffect(() => {
     // Ensure that the user is logged in before proceeding
@@ -27,6 +29,7 @@ const UserConfig = () => {
           console.log('userData :', userData);
           setfirstname(userData.payload.body.firstName);
           setlastname(userData.payload.body.lastName);
+          setUsername(userData.payload.body.userName)
         }
       });
     }
@@ -42,6 +45,7 @@ const UserConfig = () => {
     const updatedUser = {
       firstName: editingFirstName,
       lastName: editingLastName,
+      username:editingUsername
     };
 
     // Call the asynchronous action profilupdate with the new user data
@@ -62,15 +66,19 @@ const UserConfig = () => {
     // Reset the editing state variables to the current first name and last name values
     setEditingFirstName(firstname);
     setEditingLastName(lastname);
+    setEditingUsername(username)
   };
 
   return {
     navigate,
     firstname,
+    username,
     lastname,
     editingFirstName,
+    editingUsername,
     editingLastName,
     setEditingFirstName,
+    setEditingUsername,
     setEditingLastName,
     handleDisconnect,
     handleNewName,

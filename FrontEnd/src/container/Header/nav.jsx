@@ -4,7 +4,7 @@ import UserConfig from "../../components/User/config/Userconfig.jsx";
 function Navbar() {
   const isLoggedIn = localStorage.getItem("user");
   const {
-    firstname,
+    username,
     handleDisconnect,
   } = UserConfig();
   
@@ -12,7 +12,7 @@ function Navbar() {
     <>
         <Header
           isLoggedIn={isLoggedIn}
-          firstname={firstname}
+          username={username}
           handleDisconnect={handleDisconnect}
         />
     </>
