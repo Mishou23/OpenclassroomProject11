@@ -9,7 +9,7 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-export const getUserAccount = createAsyncThunk("user/account", async () => {
+export const getUserAccount = createAsyncThunk("user/profile", async () => {
   const request = await axios.post(
     `http://localhost:3001/api/v1/user/profile/`
   );

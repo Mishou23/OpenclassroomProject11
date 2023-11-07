@@ -3,19 +3,21 @@ import './style.css'
 const UserAccount = () => {
   const {
     firstname,
-    username,
     lastname,
+    username,
     editingFirstName,
-    editingUsername,
+    editingUserName,
     editingLastName,
     setEditingFirstName,
-    setEditingUsername,
     setEditingLastName,
+    setEditingUserName,
     handleNewName,
     handleCancel,
   } = UserConfig();
 
-  
+  console.log('user :', username)
+  console.log('userlastname :', lastname)
+  console.log('userfirstname :', firstname)
   return (
     <div className="contain_user">
       <main className="main bg-dark">
@@ -33,15 +35,6 @@ const UserAccount = () => {
                   value={editingFirstName}
                   onChange={(e) => setEditingFirstName(e.target.value)}
                 />
-                <input
-                  className="info_input"
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder={username}
-                  value={editingUsername}
-                  onChange={(e) => setEditingUsername(e.target.value)}
-                />
                 <button className="info_button button_left" onClick={handleNewName}>
                   SAVE
                 </button>
@@ -55,6 +48,15 @@ const UserAccount = () => {
                   placeholder={lastname}
                   value={editingLastName}
                   onChange={(e) => setEditingLastName(e.target.value)}
+                />
+                <input
+                  className="info_input"
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder={username}
+                  value={editingUserName}
+                  onChange={(e) => setEditingUserName(e.target.value)}
                 />
                 <button className="info_button button_right" onClick={handleCancel}>
                   CANCEL

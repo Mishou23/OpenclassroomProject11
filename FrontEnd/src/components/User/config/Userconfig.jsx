@@ -9,11 +9,11 @@ const UserConfig = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [firstname, setfirstname] = useState("");
-  const [username, setUsername] = useState("");
   const [lastname, setlastname] = useState("");
+  const [username, setusername] = useState("");
   const [editingFirstName, setEditingFirstName] = useState("");
   const [editingLastName, setEditingLastName] = useState("");
-  const [editingUsername, setEditingUsername] = useState("");
+  const [editingUserName, setEditingUserName] = useState("");
 
   useEffect(() => {
     // Ensure that the user is logged in before proceeding
@@ -29,7 +29,7 @@ const UserConfig = () => {
           console.log('userData :', userData);
           setfirstname(userData.payload.body.firstName);
           setlastname(userData.payload.body.lastName);
-          setUsername(userData.payload.body.userName)
+          setusername(userData.payload.body.userName);
         }
       });
     }
@@ -42,44 +42,41 @@ const UserConfig = () => {
   };
 
   const handleNewName = (e) => {
-    const updatedUser = {
-      firstName: editingFirstName,
-      lastName: editingLastName,
-      username:editingUsername
-    };
+    e.preventDefault();
 
-    // Call the asynchronous action profilupdate with the new user data
-    dispatch(profilupdate(updatedUser))
+    // Send the updated userName
+    const updatedUserName = editingUserName;
+
+    // Call the asynchronous action profilupdate with the new userName
+    dispatch(profilupdate(updatedUserName))
       .then(() => {
-        // Update the firstname state upon successful update
-        setfirstname(editingFirstName);
+        // Update the userName state upon successful update
+        setusername(updatedUserName);
         console.log("Update successful!");
-        window.location.reload();
       })
       .catch((error) => {
         // Handle errors in case the update fails
         console.error("Error during update:", error);
       });
   };
-
   const handleCancel = () => {
     // Reset the editing state variables to the current first name and last name values
     setEditingFirstName(firstname);
     setEditingLastName(lastname);
-    setEditingUsername(username)
+    setEditingUserName(username);
   };
 
   return {
     navigate,
     firstname,
-    username,
     lastname,
+    username,
     editingFirstName,
-    editingUsername,
     editingLastName,
+    editingUserName,
     setEditingFirstName,
-    setEditingUsername,
     setEditingLastName,
+    setEditingUserName,
     handleDisconnect,
     handleNewName,
     handleCancel,

@@ -39,11 +39,11 @@ const Inputs= () => {
             <form onSubmit={handleSignIn}>
               <div className="input-wrapper">
                 <label htmlFor="email">Email</label>
-                <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input type="text" id="email" autoComplete="on" value={email} onChange={(e) => setEmail(e.target.value)} required/>
               </div>
               <div className="input-wrapper">
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input type="password" id="password" value={password} autoComplete="on" onChange={(e) => setPassword(e.target.value)} required/>
               </div>
               <div className="input-remember">
                 <input type="checkbox" id="remember-me" />

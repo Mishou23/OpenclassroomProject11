@@ -11,10 +11,10 @@ axios.interceptors.request.use((config) => {
 
 export const profilupdate = createAsyncThunk(
   "user/update",
-  async (UpdateUser) => {
+  async (updatedUserName) => {
     const request = await axios.put(
       `http://localhost:3001/api/v1/user/profile/`,
-      UpdateUser
+      { userName: updatedUserName } 
     );
     return request.data;
   }
