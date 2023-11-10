@@ -9,11 +9,11 @@ const UserConfig = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [firstname, setfirstname] = useState("");
-  const [lastname, setlastname] = useState("");
   const [username, setusername] = useState("");
+  const [lastname, setlastname] = useState("");
   const [editingFirstName, setEditingFirstName] = useState("");
-  const [editingLastName, setEditingLastName] = useState("");
   const [editingUserName, setEditingUserName] = useState("");
+  const [editingLastName, setEditingLastName] = useState("");
 
   useEffect(() => {
     // Ensure that the user is logged in before proceeding
@@ -43,15 +43,19 @@ const UserConfig = () => {
 
   const handleNewName = (e) => {
     e.preventDefault();
+    
+    const updatedUser = {
+      firstName: editingFirstName,
+      lastName: editingLastName,
+      userName: editingUserName
+    };
 
-    // Send the updated userName
-    const updatedUserName = editingUserName;
-
-    // Call the asynchronous action profilupdate with the new userName
-    dispatch(profilupdate(updatedUserName))
+    // Call the asynchronous action profilupdate with the new user data
+    dispatch(profilupdate(updatedUser))
       .then(() => {
-        // Update the userName state upon successful update
-        setusername(updatedUserName);
+        // Update the firstname state upon successful update
+        setfirstname(editingFirstName);
+        setusername(editingUserName);
         console.log("Update successful!");
       })
       .catch((error) => {
@@ -59,11 +63,11 @@ const UserConfig = () => {
         console.error("Error during update:", error);
       });
   };
+
   const handleCancel = () => {
     // Reset the editing state variables to the current first name and last name values
     setEditingFirstName(firstname);
     setEditingLastName(lastname);
-    setEditingUserName(username);
   };
 
   return {
@@ -71,12 +75,12 @@ const UserConfig = () => {
     firstname,
     lastname,
     username,
+    editingUserName,
     editingFirstName,
     editingLastName,
-    editingUserName,
     setEditingFirstName,
-    setEditingLastName,
     setEditingUserName,
+    setEditingLastName,
     handleDisconnect,
     handleNewName,
     handleCancel,
