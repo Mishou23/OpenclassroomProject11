@@ -16,6 +16,7 @@ export const profilupdate = createAsyncThunk(
       `http://localhost:3001/api/v1/user/profile/`,
       UpdateUser
     );
+    console.log(UpdateUser)
     return request.data;
   }
 );

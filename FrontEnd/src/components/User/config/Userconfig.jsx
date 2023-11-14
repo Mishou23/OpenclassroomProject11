@@ -55,6 +55,7 @@ const UserConfig = () => {
       .then(() => {
         // Update the firstname state upon successful update
         setfirstname(editingFirstName);
+        setlastname(editingLastName);
         setusername(editingUserName);
         console.log("Update successful!");
       })
