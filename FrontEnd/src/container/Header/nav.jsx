@@ -14,7 +14,7 @@ function Navbar() {
           isLoggedIn={isLoggedIn}
           username={username}
           handleDisconnect={handleDisconnect}
-        />
+         />
     </>
   );
 }

@@ -21,45 +21,67 @@ const UserAccount = () => {
       <main className="main bg-dark">
         <div className="header">
           <div className="info_prof">
-            <div className="info_welcome">Welcome back</div>
+            <div className="info_welcome">Edit user info</div>
             <div className="info_input_box">
-              <div className="info_box_left">
-                <input
-                  className="info_input"
-                  type="text"
-                  name="firstname"
-                  id="firstname"
-                  placeholder={firstname}
-                  value={editingFirstName}
-                  onChange={(e) => setEditingFirstName(e.target.value)}
-                />
-                <input
-                  className="info_input"
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder={username}
-                  value={editingUserName}
-                  onChange={(e) => setEditingUserName(e.target.value)}
-                />
+            <div className="input-containers">
+            <div className="input-container">
+        <label className="label" htmlFor="username">
+          User name :
+        </label>
+        <input
+          className="info_input"
+          type="text"
+          name="username"
+          id="username"
+          placeholder={username}
+          value={editingUserName}
+          onChange={(e) => setEditingUserName(e.target.value)}
+        />
+        </div>
+        
+            <div className="input-container">
+        <label className="label" htmlFor="firstname">
+          First name :
+        </label>
+        <input
+          className="info_input"
+          type="text"
+          name="firstname"
+          id="firstname"
+          placeholder={firstname}
+          value={editingFirstName}
+          onChange={(e) => setEditingFirstName(e.target.value)}
+          readOnly
+          disabled
+        />
+      </div>
+
+      <div className="input-container">
+        <label className="label" htmlFor="lastname">
+          Last name :
+        </label>
+        <input
+          className="info_input"
+          type="text"
+          name="lastname"
+          id="lastname"
+          placeholder={lastname}
+          value={editingLastName}
+          onChange={(e) => setEditingLastName(e.target.value)}
+          readOnly
+          disabled
+        />
+      </div>
+                <div className="btn-position">
                 <button className="info_button button_left" onClick={handleNewName}>
                   SAVE
                 </button>
-              </div>
-              <div className="info_box_right">
-                <input
-                  className="info_input"
-                  type="text"
-                  name="lastname"
-                  id="lastname"
-                  placeholder={lastname}
-                  value={editingLastName}
-                  onChange={(e) => setEditingLastName(e.target.value)}
-                />
                 <button className="info_button button_right" onClick={handleCancel}>
                   CANCEL
                 </button>
+                </div>
               </div>
+             
             </div>
           </div>
         </div>

@@ -45,17 +45,12 @@ const UserConfig = () => {
     e.preventDefault();
     
     const updatedUser = {
-      firstName: editingFirstName,
-      lastName: editingLastName,
       userName: editingUserName
     };
 
     // Call the asynchronous action profilupdate with the new user data
     dispatch(profilupdate(updatedUser))
       .then(() => {
-        // Update the firstname state upon successful update
-        setfirstname(editingFirstName);
-        setlastname(editingLastName);
         setusername(editingUserName);
         console.log("Update successful!");
       })
@@ -66,9 +61,8 @@ const UserConfig = () => {
   };
 
   const handleCancel = () => {
-    // Reset the editing state variables to the current first name and last name values
-    setEditingFirstName(firstname);
-    setEditingLastName(lastname);
+    // Reset the editing state variables to the current username value
+    setEditingUserName(username);
   };
 
   return {
