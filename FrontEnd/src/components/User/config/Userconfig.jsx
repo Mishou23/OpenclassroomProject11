@@ -60,8 +60,9 @@ const UserConfig = () => {
       });
   };
 
-  const handleCancel = () => {
+  const handleCancel = (e) => {
     // Reset the editing state variables to the current username value
+e.preventDefault()
     setEditingUserName(username);
   };
 

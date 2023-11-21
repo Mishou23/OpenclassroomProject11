@@ -17,7 +17,7 @@ export const getUserAccount = createAsyncThunk("user/account", async () => {
 });
 
 const userAccountSlice = createSlice({
-  name: "UserAccount",
+  name: "user",
   initialState: {
     loading: false,
     userAccount: null,

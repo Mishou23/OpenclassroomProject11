@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../container/Header/nav";
+import Header from "../../components/Header/header"
 import Hero from "../../components/Hero/hero";
 import Features from "../../components/Features/features";
 import Footer from "../../components/Footer/footer";
@@ -10,7 +10,7 @@ function Home() {
   return (
   <>
   {/* {Disconnect()} */}
-    <Navbar />
+    <Header />
      <main>
      <Hero />
       <Features />

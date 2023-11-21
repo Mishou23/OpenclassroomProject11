@@ -1,10 +1,10 @@
-import Navbar from "../../container/Header/nav";
+import Header from "../../components/Header/header"
 import Footer from "../../components/Footer/footer";
 import Inputs from "../../components/Sign_In/inputs";
 function SignIn() {
     return (
       <>
-      <Navbar />
+      <Header />
       <Inputs />
       <Footer />
       </>
