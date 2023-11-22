@@ -6,9 +6,10 @@ import User from "../pages/User";
 function AppRouter() {
   return (
     <Routes>
+        <Route path="/user" element={<User />} />
       <Route path="/" index element={<Home />} />
       <Route path="/sign-in" element={<SignIn />} />
-      <Route path="/user" element={<User />} />
+  
     </Routes>
   );
 }

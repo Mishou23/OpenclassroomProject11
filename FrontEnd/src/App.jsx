@@ -16,13 +16,13 @@ function App() {
         <Route path="/" element={<AppRouter />} />
         <Route
           path="/sign-in"
-          element={loggedIn ? <Navigate to="/" /> : <SignIn />}
+          element={<SignIn />}
         />
         {loggedIn ? (
-          // If user is logged in, allow navigation to all pages
+       
           <Route path="/*" element={<AppRouter />} />
         ) : (
-          // If user is not logged in, redirect to home page
+        
           <Route path="/*" element={<Navigate to="/sign-in" />} />
         )}
       </Routes>
