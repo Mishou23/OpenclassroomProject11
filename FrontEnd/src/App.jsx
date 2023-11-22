@@ -23,7 +23,7 @@ function App() {
           <Route path="/*" element={<AppRouter />} />
         ) : (
           // If user is not logged in, redirect to home page
-          <Route path="/*" element={<Navigate to="/" />} />
+          <Route path="/*" element={<Navigate to="/sign-in" />} />
         )}
       </Routes>
       <Footer />
