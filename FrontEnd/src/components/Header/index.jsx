@@ -14,7 +14,7 @@ import "./index.css";
 function Header({ loggedIn }) {
   const userData = useSelector((state) => state.user.userData);
   const dispatch = useDispatch();
-
+  console.log(loggedIn);
   function handleSignOut() {
     localStorage.removeItem("token");
     dispatch(signOut());
