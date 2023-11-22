@@ -10,8 +10,6 @@ export const loginUser = createAsyncThunk(
       userCredential
     );
     const token = request.data.body.token;
-    localStorage.setItem("user", token );
-    console.log('token :', token)
     return token;
   }
 );
@@ -22,6 +20,7 @@ const LoginSlice = createSlice({
     loading: false,
     user: null,
     isAuthenticated: false,
+    token: null, 
     error: null,
   },
 
@@ -29,7 +28,7 @@ const LoginSlice = createSlice({
     logOutUser: (state) => {
       state.user = null;
       state.isAuthenticated = false;
-      localStorage.removeItem("user");
+      state.token = null; 
     },
   },
 
@@ -45,12 +44,14 @@ const LoginSlice = createSlice({
         state.loading = false;
         state.isAuthenticated = true;
         state.user = action.payload;
+        state.token = action.payload; 
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
+        state.token = null; 
         if (action.error.message === "Request failed with status code 400") {
-          state.error = "Access Debied! Invalid Personnal information";
+          state.error = "Access Denied! Invalid Personal Information";
         } else {
           state.error = action.error.message;
         }
