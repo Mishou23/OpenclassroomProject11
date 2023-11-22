@@ -37,7 +37,7 @@ const UserConfig = () => {
 
   const handleDisconnect = () => {
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/");
   };
 
   const handleNewName = (e) => {
