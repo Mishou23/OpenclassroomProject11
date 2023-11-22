@@ -1,13 +1,15 @@
+// UserConfig.jsx
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAccount } from "../../../Store/reducers/useraccount";
 import { profilupdate } from "../../../Store/reducers/profilupdate";
 
-
 const UserConfig = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userName = useSelector((state) => state.userAccount.userAccount?.body.userName);
+
   const [firstname, setfirstname] = useState("");
   const [username, setusername] = useState("");
   const [lastname, setlastname] = useState("");
@@ -16,14 +18,12 @@ const UserConfig = () => {
   const [editingLastName, setEditingLastName] = useState("");
 
   useEffect(() => {
-    // Ensure that the user is logged in before proceeding
     const isLoggedIn = localStorage.getItem("user");
-    console.log('logIn :',isLoggedIn)
+
     if (!isLoggedIn) {
-     console.log("redirect to login");
-     navigate("/login")
+      console.log("redirect to login");
+      navigate("/login");
     } else {
-      // Fetch user data only if the user is logged in
       dispatch(getUserAccount()).then((userData) => {
         if (userData) {
           console.log('userData :', userData);
@@ -35,7 +35,6 @@ const UserConfig = () => {
     }
   }, [navigate, dispatch]);
 
- 
   const handleDisconnect = () => {
     localStorage.removeItem("user");
     navigate("/login");
@@ -43,26 +42,23 @@ const UserConfig = () => {
 
   const handleNewName = (e) => {
     e.preventDefault();
-    
+
     const updatedUser = {
-      userName: editingUserName
+      userName: editingUserName,
     };
 
-    // Call the asynchronous action profilupdate with the new user data
     dispatch(profilupdate(updatedUser))
       .then(() => {
         setusername(editingUserName);
         console.log("Update successful!");
       })
       .catch((error) => {
-        // Handle errors in case the update fails
         console.error("Error during update:", error);
       });
   };
 
   const handleCancel = (e) => {
-    // Reset the editing state variables to the current username value
-e.preventDefault()
+    e.preventDefault();
     setEditingUserName(username);
   };
 

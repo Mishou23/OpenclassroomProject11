@@ -1,5 +1,5 @@
 // Header.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/argentBankLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,11 +8,14 @@ import { useSelector } from "react-redux";
 import UserConfig from "../../components/User/config/Userconfig.jsx";
 
 function Header() {
+  const userName = useSelector((state) => state.userAccount.userAccount?.body.userName);
   const isLoggedIn = localStorage.getItem("user");
-  const userData = useSelector((state) => state.userAccount.userAccount);
+  const [localUserName, setLocalUserName] = useState(userName);
   const { handleDisconnect } = UserConfig();
-  const userName = userData && userData.body.userName; 
- console.log('header',userData)
+  useEffect(() => {
+    setLocalUserName(userName);
+  }, [userName]);
+
   return (
     <header>
       <nav className="main-nav">
@@ -23,10 +26,10 @@ function Header() {
         <div>
           {isLoggedIn ? (
             <div>
-              {userName && (
+              {localUserName && (
                 <Link className="main-nav-item" to="/profile">
                   <i className="fa fa-user-circle"></i>
-                  {userName}
+                  {localUserName}
                 </Link>
               )}
               <Link className="main-nav-item" onClick={handleDisconnect} to="/login">
