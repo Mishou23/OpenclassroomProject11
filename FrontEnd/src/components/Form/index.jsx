@@ -44,7 +44,7 @@ function Form() {
     <form onSubmit={handleSignIn}>
       {error && <div className="error-message">{error}</div>}
       <div className="input-wrapper">
-        <label htmlFor="email">Username</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           autoComplete="on"
