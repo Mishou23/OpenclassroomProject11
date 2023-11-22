@@ -1,0 +1,38 @@
+.edit-form-title {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-row input {
+  width: 60%;
+  height: 27px;
+  border-radius: 5px;
+  border: none;
+}
+
+.edit-form-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1.5rem auto;
+  width: 100%;
+}
+
+.save-button,
+.cancel-button {
+  width: 48%;
+}
+
+.read-only {
+  opacity: 70%;
+  background-color: white;
+  color: grey;
+}

@@ -1,18 +1,23 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignIn from "./pages/Sign-In/sign-in.jsx";
-import Home from "./pages/Home/home.jsx";
-import User from "./pages/User/user.jsx";
-import "./App.css";
+import { BrowserRouter as Router, Navigate } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import AppRouter from "./AppRouter";
+import { useSelector } from "react-redux";
+import "./index.css";
 
 function App() {
+  const loggedIn = useSelector((state) => state.signIn.loggedIn || true);
+
+  if (!loggedIn) {
+    console.log("redirect to login");
+    return <Navigate to="/sign-in" />;
+  }
+
   return (
     <Router>
-      <Routes>
-        <Route path="/" index element={<Home />} />
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/profile" element={<User />} />
-      </Routes>
+      {loggedIn ? <Header loggedIn={loggedIn} /> : <Header />}
+      <AppRouter />
+      <Footer />
     </Router>
   );
 }
