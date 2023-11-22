@@ -9,7 +9,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Set Home component as the default route */}
         <Route path="/" index element={<Home />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<User />} />
